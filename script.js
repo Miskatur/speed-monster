@@ -44,15 +44,22 @@ const typeController = (e) => {
 
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
-  } else {
-    display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
   }
+  else {
+    display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount++
+  }
+
+
+
 
   // check if given question text is equal to user typed text
   if (questionText === userText) {
     gameOver();
   }
 };
+
+
 
 const validate = (key) => {
   if (key === questionText[userText.length - 1]) {
@@ -76,7 +83,7 @@ const gameOver = () => {
   // clear user text
   display.innerHTML = "";
   // make it inactive
-  display.classList.add("inactive", "custom");
+  display.classList.add("inactive");
   // show result
   resultModal.innerHTML += `
     <h1>Finished!</h1>
@@ -127,7 +134,8 @@ const start = () => {
 startBtn.addEventListener("click", start);
 
 // If history exists, show it
-displayHistory();
+// displayHistory();
+addHistory(questionText, timeTaken, errorCount);
 
 // Show typing time spent
 setInterval(() => {
