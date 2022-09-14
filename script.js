@@ -50,9 +50,6 @@ const typeController = (e) => {
     errorCount++
   }
 
-
-
-
   // check if given question text is equal to user typed text
   if (questionText === userText) {
     gameOver();
@@ -134,8 +131,7 @@ const start = () => {
 startBtn.addEventListener("click", start);
 
 // If history exists, show it
-// displayHistory();
-addHistory(questionText, timeTaken, errorCount);
+displayHistory();
 
 // Show typing time spent
 setInterval(() => {
