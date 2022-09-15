@@ -21,6 +21,7 @@ fetch("./texts.json")
 
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
+  e.key == '' ? e.preventDefault() : '';
   const newLetter = e.key;
 
   // Handle backspace press
@@ -118,6 +119,7 @@ const start = () => {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
       countdownOverlay.style.display = "none";
+      countdownOverlay.innerHTML = '';
       display.classList.remove("inactive");
 
       clearInterval(startCountdown);
